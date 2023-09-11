@@ -42,6 +42,9 @@ public:
 			h01.Load("./assets/Level_03.png");
 			m_vecHelpImages.emplace_back(std::move(h01));
 		}
+		{
+			m_bone.Load("./assets/Bone.png");
+		}
 		return true;
 	}
 	void drawBackground()
@@ -50,14 +53,14 @@ public:
 		{
 			for (float y = 0; y < ScreenHeight(); y += dogSize.y*2)
 			{
-				FillRectDecal({x,y}, dogSize, olc::GREY);
+				FillRectDecal({x,y}, dogSize, olc::DARK_GREEN);
 			}
 		}
 		for (float x = dogSize.x; x < ScreenWidth(); x += dogSize.x * 2)
 		{
 			for (float y = dogSize.y; y < ScreenHeight(); y += dogSize.y * 2)
 			{
-				FillRectDecal({ x,y }, dogSize, olc::GREY);
+				FillRectDecal({ x,y }, dogSize, olc::DARK_GREEN);
 			}
 		}
 		
@@ -65,7 +68,7 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		Clear(olc::WHITE);
+		Clear(olc::GREEN);
 		drawBackground();
 		m_time += fElapsedTime;
 
@@ -100,7 +103,7 @@ public:
 
 		olc::vf2d finalPos = vecfinalPos[m_levelCount];
 
-		FillRectDecal(finalPos, dogSize, olc::GREEN);
+		DrawDecal(finalPos, m_bone.Decal(), {  dogSize.x/512.f,dogSize.y/512.f });
 
 
 		FillRectDecal(m_pos, dogSize, olc::RED);
@@ -184,4 +187,5 @@ private:
 
 	std::vector<olc::Renderable> m_vecHelpImages;
 	std::vector<olc::vf2d> m_wallPos;
+	olc::Renderable m_bone;
 };
