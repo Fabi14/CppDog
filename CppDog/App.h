@@ -50,18 +50,19 @@ public:
 	}
 	void drawBackground()
 	{
+		auto color = olc::Pixel(11, 102, 35);
 		for (float x = 0; x < ScreenWidth(); x += dogSize.x*2)
 		{
 			for (float y = 0; y < ScreenHeight(); y += dogSize.y*2)
 			{
-				FillRectDecal({x,y}, dogSize, olc::DARK_GREEN);
+				FillRectDecal({x,y}, dogSize, color);
 			}
 		}
 		for (float x = dogSize.x; x < ScreenWidth(); x += dogSize.x * 2)
 		{
 			for (float y = dogSize.y; y < ScreenHeight(); y += dogSize.y * 2)
 			{
-				FillRectDecal({ x,y }, dogSize, olc::DARK_GREEN);
+				FillRectDecal({ x,y }, dogSize, color);
 			}
 		}
 		
@@ -69,7 +70,7 @@ public:
 
 	bool OnUserUpdate(float fElapsedTime) override
 	{
-		Clear(olc::GREEN);
+		Clear(olc::Pixel(85,131,103));
 		drawBackground();
 		m_time += fElapsedTime;
 
