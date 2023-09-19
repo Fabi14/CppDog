@@ -44,6 +44,7 @@ public:
 		}
 		{
 			m_bone.Load("./assets/Bone.png");
+			m_dog.Load("./assets/Dog.png");
 		}
 		return true;
 	}
@@ -104,9 +105,8 @@ public:
 		olc::vf2d finalPos = vecfinalPos[m_levelCount];
 
 		DrawDecal(finalPos, m_bone.Decal(), {  dogSize.x/512.f,dogSize.y/512.f });
+		DrawDecal(m_pos, m_dog.Decal(), { dogSize.x / 512.f,dogSize.y / 512.f });
 
-
-		FillRectDecal(m_pos, dogSize, olc::RED);
 
 		for (auto wall : m_wallPos)
 		{
@@ -188,4 +188,5 @@ private:
 	std::vector<olc::Renderable> m_vecHelpImages;
 	std::vector<olc::vf2d> m_wallPos;
 	olc::Renderable m_bone;
+	olc::Renderable m_dog;
 };
